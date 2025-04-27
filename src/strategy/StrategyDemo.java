@@ -9,16 +9,13 @@ public class StrategyDemo {
         Function<Double, String> payByPayPal = amount -> amount + " hrn payed via PayPal.";
         Function<Double, String> payByBank = amount -> amount + " hrn payed by bank transfer.";
 
-        //зберігаєм стратегію
-        Function<Double, String> paymentStrategy;
+        Payment payment = new Payment(payByCard);
+        System.out.println(payment.pay(399.98));
 
-        paymentStrategy = payByCard;
-        System.out.println(paymentStrategy.apply(399.98));
+        payment.setPaymentStrategy(payByPayPal);
+        System.out.println(payment.pay(989.99));
 
-        paymentStrategy = payByPayPal;
-        System.out.println(paymentStrategy.apply(989.99));
-
-        paymentStrategy = payByBank;
-        System.out.println(paymentStrategy.apply(654.3));
+        payment.setPaymentStrategy(payByBank);
+        System.out.println(payment.pay(654.3));
         }
     }
