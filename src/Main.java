@@ -1,5 +1,7 @@
+import executeAround.*;
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
+    public static void main(String[] args)
+    {
+        DataBaseConnection.use(connection -> connection.queryDetails().queryStuff());
     }
 }
